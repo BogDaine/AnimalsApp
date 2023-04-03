@@ -20,7 +20,7 @@ public class Animal {
         return true;
     }
 
-    public static ArrayList<Animal> createAnimalsList(int numContacts) {
+    public static ArrayList<Animal> createAnimalsList() {
         ArrayList<Animal> animals = new ArrayList<Animal>();
 
         animals.add(new Animal("tigru tasmanian", "Australia"));
