@@ -17,7 +17,7 @@ import java.util.List;
 
 public class AnimalsAdapter extends
         RecyclerView.Adapter<AnimalsAdapter.ViewHolder> {
-
+    OnAnimalClickedListener mOnAnimalClickedListener;
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,6 +41,14 @@ public class AnimalsAdapter extends
         ConstraintLayout animalLayout = holder.getAnimalLayout();
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(animalLayout);
+
+        holder.mAnimalLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnAnimalClickedListener.onAnimalClicked(position);
+            }
+        });
+
         switch(animal.getmContinent())
         {
             case "Europa":
@@ -130,8 +138,9 @@ public class AnimalsAdapter extends
     }
     private List<Animal> mAnimals;
 
-    public AnimalsAdapter(List<Animal> animals) {
+    public AnimalsAdapter(List<Animal> animals, OnAnimalClickedListener listener) {
         mAnimals = animals;
+        mOnAnimalClickedListener = listener;
     }
 
 }

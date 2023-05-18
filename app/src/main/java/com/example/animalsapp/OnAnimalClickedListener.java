@@ -1,2 +1,5 @@
-package com.example.animalsapp;public class OnAnimelClickedListener {
+package com.example.animalsapp;
+
+public interface OnAnimalClickedListener{
+    public void onAnimalClicked(int position);
 }
