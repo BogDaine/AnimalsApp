@@ -2,11 +2,13 @@ package com.example.animalsapp;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,5 +61,34 @@ public class AnimalInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_animal_info, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        View view = getView();
+        TextView nameTextView = (TextView) view.findViewById(R.id.name_info);
+        nameTextView.setText(SelectedAnimal.INSTANCE.NAME);
+        TextView ContinentTextView = (TextView) view.findViewById(R.id.continent_info);
+        ContinentTextView.setText(SelectedAnimal.INSTANCE.CONTINENT);
+
+        switch(SelectedAnimal.INSTANCE.CONTINENT){
+            case "Europa":
+                view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.good_green));
+                break;
+            case "Asia":
+                view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.good_red));
+                break;
+            case "America":
+                view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.good_blue));
+                break;
+            case "Africa":
+                view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.good_yellow));
+                break;
+            case "Australia":
+                view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.good_orange));
+                break;
+        }
+
     }
 }

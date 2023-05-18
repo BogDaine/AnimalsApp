@@ -1,2 +1,6 @@
-package com.example.animalsapp;public enum SelectedAnimal {
+package com.example.animalsapp;
+
+public enum SelectedAnimal {
+    INSTANCE;
+    public String NAME, CONTINENT;
 }
